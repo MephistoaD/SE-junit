@@ -1,4 +1,6 @@
-import scanner.Scanner;
+package crazytest;
+
+import crazytest.scanner.Scanner;
 
 public class StubScanner implements Scanner {
     private String certificateCode;

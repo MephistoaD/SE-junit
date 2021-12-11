@@ -1,4 +1,6 @@
-import validator.Validator;
+package crazytest;
+
+import crazytest.validator.Validator;
 
 public class StubValidator implements Validator {
     public boolean valid;

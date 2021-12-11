@@ -1,4 +1,4 @@
-package scanner;
+package crazytest.scanner;
 
 public interface Scanner {
     public String scan();

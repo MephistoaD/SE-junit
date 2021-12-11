@@ -1,5 +1,7 @@
-import scanner.Scanner;
-import validator.Validator;
+package crazytest;
+
+import crazytest.scanner.Scanner;
+import crazytest.validator.Validator;
 
 public class PassageController {
     public Scanner scanner;

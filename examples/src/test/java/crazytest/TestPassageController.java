@@ -1,5 +1,7 @@
-import scanner.*;
-import validator.*;
+package crazytest;
+
+import crazytest.scanner.*;
+import crazytest.validator.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
