@@ -1,0 +1,434 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>JUNIT</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/robot-lung.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+
+		<link rel="preconnect" href="https://fonts.googleapis.com"> 
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+		<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;700&family=Roboto:ital,wght@0,900;1,900&display=swap" rel="stylesheet">
+	</head>
+	<body>
+		<div class="line top"></div>
+		<div class="line bottom"></div>
+		<div class="line left"></div>
+		<div class="line right"></div>
+		<div class="reveal">
+			<div class="slides">
+				<section data-markdown>
+					<textarea data-template>
+						## JUNIT
+						<small>Presented by:<br>
+						[Pablo Gil](https://github.com/PGG1234), [Xabier Moure](https://github.com/XabierMoureP), [Marc Mocker](https://github.com/MarcMocker) and [Samuel Navarro](https://github.com/SamuelNavD)</small>
+						
+						<small><svg height="24" aria-hidden="true" viewBox="0 0 16 16" version="1.1" width="28" data-view-component="true" style="fill: rgba(0,0,0,0.3);">
+							<path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+						</svg> [Check out our examples](https://github.com/MarcMocker/SE-junit)</small>
+						---
+						<!-- .slide: data-auto-animate -->
+						## The Problem...
+						
+						<img src="resources/class_diagram.png" alt="">
+						---
+						<!-- .slide: data-auto-animate -->
+						## The Problem...
+						<img src="resources/class_diagram.png" style="position: absolute; opacity: 0; left: 0" alt="">
+
+						<ul>
+							<li class="">our projects get bigger</li>
+							<li class="fragment fade-in">the responsibilities are spread over various teams</li>
+							<li class="fragment fade-in">spaghetti code !!!</li>
+						</ul>
+						<p class="fragment fade-in">who has to debug all the errors? and <b>how?</b></p>
+
+					</textarea>
+				</section>
+				<section data-auto-animate>
+					<h2>What are we going to do?</h2>
+					<p style="font-size: 2em;">TESTING</p>
+					<ol>
+						<li>What is unit testing?</li>
+						<li>Structure of unit testing</li>
+						<!--AAA-->
+						<!--demo, pitagoras-->
+						<li>simple tests - little demo</li>
+						<li>FIRST - <em>Requirements of unit testing</em></li>
+						<li><code>void</code> functions?</li>
+						<!--Another person's code, Stub-->
+						<li>crazy tests - crazy demo</li>
+					</ol>
+				</section>
+				<section data-auto-animate>
+					<h2 style="opacity: 0; padding: 0;">What are we going to do?</h2>
+					<p style="font-size: 4em; margin-bottom: 4em; margin-top: 1.25em;">TESTING</p>
+					<ol>
+						<li style="opacity: 0;">What is unit testing?</li>
+						<li style="opacity: 0;">Structure of unit testing</li>
+						<!--AAA-->
+						<!--demo, pitagoras-->
+						<li style="opacity: 0;">simple tests - little demo</li>
+						<li style="opacity: 0;">FIRST - <em>Requirements of unit testing</em></li>
+						<li style="opacity: 0;"><code>void</code> functions?</li>
+						<!--Another person's code, Stub-->
+						<li style="opacity: 0;">crazy tests - crazy demo</li>
+					</ol>
+				</section>
+				<section data-auto-animate>
+					<p style="opacity: 0.3; font-size: 0;">TESTING</p>
+					<h2>What is testing?</h2>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						## Testing
+
+						> Testing is a tool that developers have to uncover errors that are make inadvertently when software is designed and constructed.
+
+						<small><b>Source:</b> <em>Software Engineering. A Practitioners Approach (6th ed.). Roger Pressman</em></small>
+						<aside class="notes">
+							Different approaches:
+							<ul>
+								<li>Test at the end</li>
+								<li>Test as basis daily</li>
+								<li>MIDDLE POINT: Incremental testing <br>Unit tests -> Full program</li>
+							</ul>
+						</aside>
+						---
+						## Unit Testing
+						<div style="display: flex;">
+							<div style="width: 68%; float: left; margin: auto 0;">
+								Verification of smallest unit of software
+								<div class="fragment fade-up" style="margin-top: 10%; padding: 1em 0; background-color: rgba(201, 16, 16,0.1); border-radius: 10px;">
+									<small class="" style="text-align: center;">In OOP</small>
+									<p style="margin-top: -0.7em; padding-left: 0.5em;">
+										<span class="fragment fade-up">Unit testing </span>
+										<!--<span class="fragment fade-up"><svg xmlns="http://www.w3.org/2000/svg" width="100" height="50" style="fill: white; margin-bottom: -0.3em;" viewBox="0 0 24 24"><path d="M24 12l-12-8v5h-12v6h12v5z"/></svg></span>-->
+										<span class="fragment fade-up" style="margin: 0 10px">≈</span>
+										<span class="fragment fade-right">Class testing</span>
+									</p>
+								</div>
+							</div>
+							<figure style="width: 30%; margin-left: 2%;">
+								<img src="resources/unit_test_illustration.png">
+								<figcaption style="font-size: 12pt;"><b>Source:</b> <em>Software Engineering. A Practitioners Approach (6th ed.). Roger Pressman</em></figcaption>
+							</figure>
+						</div>
+
+						<aside class="notes">
+							<p>In OOP: Class == UNITS</p>
+							<p>Also methods are <b>smallest units</b></p>
+						</aside>
+						---
+						## Structure of Unit Testing
+						<div style="display: flex;">
+							<div style="width: 30%;">
+								<h5 class="fragment">Arrange</h5>
+								<ul>
+									<li class="fragment">Environment</li>
+									<li class="fragment">Parameters</li>
+								</ul>
+								<figure class="fragment">
+									<img src="resources/arrange.png">
+									<figcaption style="font-size: 12pt;"></figcaption>
+								</figure>
+							</div>
+							<div style="width: 30%; margin-left: 3%;">
+								<h5 class="fragment">Act</h5>
+								<ul>
+									<li class="fragment">Executing</li>
+									<li class="fragment">Saving results</li>
+								</ul>
+								<figure class="fragment">
+									<img src="resources/act.png">
+									<figcaption style="font-size: 12pt;"></figcaption>
+								</figure>
+							</div>
+							<div style="width: 30%; margin: auto 0; margin-left: 3%;">
+								<h5 class="fragment">Assert</h5>
+								<ul>
+									<li class="fragment">Evaluation</li>
+								</ul>
+								<figure class="fragment">
+									<img src="resources/assert.jpg" height="345">
+									<figcaption style="font-size: 12pt;"></figcaption>
+								</figure>
+							</div>
+						</div>
+					</textarea>
+				</section>
+
+				<section data-markdown data-auto-animate>
+					<textarea data-template>
+						<!-- .slide: data-background="rgba(201, 16, 16, 0.25)" -->
+						``` java
+						public class Pythagoras {
+							public int triangle(int a, int b){
+								if (a < 0 || b < 0){
+									return -1;
+								}
+								return (int) Math.hypot(a, b);
+							}
+						}
+						```
+					</textarea>
+				</section>
+
+				<section data-markdown data-auto-animate>
+					<textarea data-template>
+						<!-- .slide: data-background="rgba(201, 16, 16, 0.25)" -->
+						``` java
+						public class Pythagoras {
+							public int triangle(int a, int b){
+								if (a < 0 || b < 0){
+									return -1;
+								}
+								return (int) Math.hypot(a, b);
+							}
+						}
+						```
+						```java
+						@Test
+						@DisplayName("simple execution with valid numbers")
+						void valid_numbers(){
+							// ARRANGE
+							Pythagoras p = new Pythagoras();
+							int a = 3;
+							int b = 5;
+
+							// ACT
+							var result = p.triangle(a, b);
+
+							// ASSERT
+							assertEquals(5, result);
+						}
+						```
+					</textarea>
+				</section>
+
+				<section data-markdown data-auto-animate>
+					<textarea data-template>
+						<!-- .slide: data-background="rgba(201, 16, 16, 0.25)" -->
+						``` java
+						public class Pythagoras {
+							public int triangle(int a, int b){
+								if (a < 0 || b < 0){
+									return -1;
+								}
+								return (int) Math.hypot(a, b);
+							}
+						}
+						```
+						```java
+						@Test
+						@DisplayName("simple execution with valid numbers")
+						void valid_numbers(){
+							// ARRANGE
+							Pythagoras p = new Pythagoras();
+							int a = 3;
+							int b = 5;
+
+							// ACT
+							var result = p.triangle(a, b);
+
+							// ASSERT
+							assertEquals(5, result);
+						}
+						```
+						#### TEST PASSED <!-- .element: style="color: rgb(9, 160, 9);" -->
+					</textarea>
+				</section>
+
+				<section data-auto-animate style="text-align: left;">
+					<h2 style="text-align: center;"><em>FIRST</em> PRINCIPLE</h2>
+					<div style="display: flex;">
+						<div style="width: 40%;">
+							<h4>F<span data-id="f">AST</span></h4>
+							<h4>I<span data-id="i" style="opacity: 0;">SOLATED</span></h4>
+							<h4>R<span data-id="r" style="opacity: 0;">EPEATABLE</span></h4>
+							<h4>S<span data-id="s" style="opacity: 0;">ELF-VALIDATING</span></h4>
+							<h4>T<span data-id="t" style="opacity: 0;">IMELY</span></h4>
+						</div>
+						<div style="width: 55%; margin: auto 0; margin-left: 5%;">
+							<ul> <!--FAST-->
+								<li>Perform speed of execution</li>
+								<li>Easy to read</li>
+								<li>No unnecessary additions</li>
+							</ul>
+						</div>
+					</div>
+				</section>
+				<section data-auto-animate style="text-align: left;">
+					<h2 style="text-align: center;"><em>FIRST</em> PRINCIPLE</h2>
+					<div style="display: flex;">
+						<div style="width: 40%;">
+							<h4>F<span data-id="f" style="opacity: 0;">AST</span></h4>
+							<h4>I<span data-id="i">SOLATED</span></h4>
+							<h4>R<span data-id="r" style="opacity: 0;">EPEATABLE</span></h4>
+							<h4>S<span data-id="s" style="opacity: 0;">ELF-VALIDATING</span></h4>
+							<h4>T<span data-id="t" style="opacity: 0;">IMELY</span></h4>
+						</div>
+						<div style="width: 55%; margin: auto 0; margin-left: 5%;">
+							<ul> <!--ISOLATED-->
+								<li>One test result should not affect other tests</li>
+								<li>Encapsulation (interface segregation principle)</li>
+								<li>We are not testing our teammates code!</li>
+							</ul>
+						</div>
+					</div>
+				</section>
+				<section data-auto-animate style="text-align: left;">
+					<h2 style="text-align: center;"><em>FIRST</em> PRINCIPLE</h2>
+					<div style="display: flex;">
+						<div style="width: 40%;">
+							<h4>F<span data-id="f" style="opacity: 0;">AST</span></h4>
+							<h4>I<span data-id="i" style="opacity: 0;">SOLATED</span></h4>
+							<h4>R<span data-id="r">EPEATABLE</span></h4>
+							<h4>S<span data-id="s" style="opacity: 0;">ELF-VALIDATING</span></h4>
+							<h4>T<span data-id="t" style="opacity: 0;">IMELY</span></h4>
+						</div>
+						<div style="width: 55%; margin: auto 0; margin-left: 5%;">
+							<ul> <!--REPEATABLE-->
+								<li>Deliver the same result on multiple executions</li>
+							</ul>
+						</div>
+					</div>
+				</section>
+
+				<section data-auto-animate style="text-align: left;">
+					<h2 style="text-align: center;"><em>FIRST</em> PRINCIPLE</h2>
+					<div style="display: flex;">
+						<div style="width: 40%;">
+							<h4>F<span data-id="f" style="opacity: 0;">AST</span></h4>
+							<h4>I<span data-id="i" style="opacity: 0;">SOLATED</span></h4>
+							<h4>R<span data-id="r" style="opacity: 0;">EPEATABLE</span></h4>
+							<h4>S<span data-id="s">ELF-VALIDATING</span></h4>
+							<h4>T<span data-id="t" style="opacity: 0;">IMELY</span></h4>
+						</div>
+						<div style="width: 55%; margin: auto 0; margin-left: 5%;">
+							<ul> <!--SELF-VALIDATING-->
+								<li>Unequivocal result</li>
+								<li>Developer should get a simple result with no need for interpretation</li>
+								<li>There should not be the need to debug or test the tests!</li>
+							</ul>
+						</div>
+					</div>
+				</section>
+
+				<section data-auto-animate style="text-align: left;">
+					<h2 style="text-align: center;"><em>FIRST</em> PRINCIPLE</h2>
+					<div style="display: flex;">
+						<div style="width: 40%;">
+							<h4>F<span data-id="f" style="opacity: 0;">AST</span></h4>
+							<h4>I<span data-id="i" style="opacity: 0;">SOLATED</span></h4>
+							<h4>R<span data-id="r" style="opacity: 0;">EPEATABLE</span></h4>
+							<h4>S<span data-id="s" style="opacity: 0;">ELF-VALIDATING</span></h4>
+							<h4>T<span data-id="t">IMELY</span></h4>
+						</div>
+						<div style="width: 55%; margin: auto 0; margin-left: 5%;">
+							<ul> <!--TIMELY-->
+								<li>Frequent testing <small style="vertical-align: middle;">(before each commit)</small></li>
+								<li>Prevents the upstream repository from containing preventable bugs</li>
+							</ul>
+						</div>
+					</div>
+				</section>
+				<section data-auto-animate>
+					<h2>Now we know...</h2>
+					<ul>
+						<li>the advantages of testing</li>
+						<li>how to structure a test</li>
+						<li>how to test a function which returns us any value</li>
+					</ul>
+				</section>
+				<section data-auto-animate>
+					<h2>Now we know...</h2>
+					<ul>
+						<li>the advantages of testing</li>
+						<li>how to structure a test</li>
+						<li>how to test a function which returns us any value</li>
+					</ul>
+					<img src="resources/meme_void.png" alt="" height="350">
+				</section>
+				<section data-auto-animate>
+					<h2><code>void</code> functions</h2>
+					<p>We need to check if a <code>void</code> function has been executed properly.</p>
+					<h4 data-id="stubs" class="fragment fade-in">Stubs</h4>
+				</section>
+				<section data-auto-animate>
+					<h4 data-id="stubs" style="font-size: 2.5em;">Stubs</h4>
+					<p>Object needed by the unit that we are testing.</p>
+					<p>It replaces that object emulating its functionality.</p>
+				</section>
+				<section data-auto-animate>
+					<h4 data-id="stubs" style="font-size: 2.5em;">Stubs</h4>
+					<p>Object needed by the unit that we are testing.</p>
+					<p>It replaces that object emulating its functionality.</p>
+					<figure>
+						<img src="resources/unit_test_with_stubs.png" alt="" height="400">
+						<figcaption style="font-size: 12pt;"><b>Source:</b> <em>Software Engineering. A Practitioners Approach (6th ed.). Roger Pressman</em></figcaption>
+					</figure>
+				</section>
+
+				<section>
+					<h2>REFERENCES</h2>
+					<ul>
+						<li><b>R. Pressman.</b> Software Engineering. A Practitioners Approach (6th ed.). <em>McGraw Hill</em></li>
+						<li><b>I. Sommerville</b> Software Engineering (7th ed.). <em>Pearson</em></li>
+					</ul>
+				</section>
+
+				<section>
+					<table>
+						<tr>
+							<th>Team Member</th>
+							<th>Tasks</th>
+						</tr>
+						<tr>
+							<td>Pablo Gil</td>
+							<td>Research on theory, realize slides, summarize theory</td>
+						</tr>
+						<tr>
+							<td>Xabier Moure</td>
+							<td>Research on theory, summarize theory, realize slides</td>
+						</tr>
+						<tr>
+							<td>Marc Mocker</td>
+							<td>Research on theory, prepare demos, realize slides</td>
+						</tr>
+						<tr>
+							<td>Samuel Navarro</td>
+							<td>Research on theory, realize slides, prepare demos</td>
+						</tr>
+						<tr>
+							<td colspan="2" style="text-align: center;"><small>All group members have contributed with similar activities and effort on the different tasks</small></td>
+						</tr>
+					</table>
+				</section>
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+				margin: 0.2,
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+	</body>
+</html>
