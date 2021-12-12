@@ -1,6 +1,10 @@
-package crazytest.scanner;
+package hopelessdebugging.scanner;
 
 public interface Scanner {
+    public static Scanner create(){
+        return new DummyScanner();
+    }
+
     public String scan();
 
     public boolean hasNext();

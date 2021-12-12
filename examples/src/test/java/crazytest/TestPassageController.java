@@ -24,8 +24,8 @@ public class TestPassageController {
         passageController.controllOneAccessAttemt();
         
         // ASSERT
-        assertEquals(((StubScanner) scanner).allowPassage , pass);
-        assertEquals(((StubScanner) scanner).denyPassage, !pass);
+        assertEquals(((StubScanner) scanner).allowPassage , pass); // confirm the allowPassage function has ben called
+        assertEquals(((StubScanner) scanner).denyPassage, !pass); // confirm the denyPassage function has not been called
     }
 
     @Test

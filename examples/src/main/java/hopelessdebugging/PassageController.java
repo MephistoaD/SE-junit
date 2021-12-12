@@ -1,7 +1,7 @@
-package crazytest;
+package hopelessdebugging;
 
-import crazytest.scanner.Scanner;
-import crazytest.validator.Validator;
+import hopelessdebugging.scanner.Scanner;
+import hopelessdebugging.validator.Validator;
 
 public class PassageController {
     public Scanner scanner;
@@ -20,7 +20,7 @@ public class PassageController {
 
     public void controllOneAccessAttemt(){
         String covidCertificate = scanner.scan();
-        if (validator.validate(covidCertificate)){
+        if (!validator.validate(covidCertificate)){
             scanner.allowPassage();
         } else {
             scanner.denyPassage();

@@ -1,4 +1,4 @@
-package crazytest;
+package hopelessdebugging;
 
 import crazytest.scanner.Scanner;
 

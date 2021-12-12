@@ -19,3 +19,15 @@ dependencies {
 test {
     useJUnitPlatform()
 }
+
+tasks.withType(Test).configureEach {
+    useJUnitPlatform()
+
+    systemProperty 'java.util.logging.config.file', "algo.properties"
+
+    forkEvery = 1
+
+    testLogging {
+        showStandardStreams = true
+    }
+}
